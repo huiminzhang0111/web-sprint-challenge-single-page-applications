@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Order from './components/Order';
 import Home from './components/Home'
 import { Route, Link, Switch } from 'react-router-dom';
@@ -37,7 +37,7 @@ const initialDisabled = true
 
 
 const App = () => {
-  const [order, setOrder] = useState([])
+  const [order, setOrder] = useState(initialValues)
   const [formValues, setFormValues] = useState(initialValues)
 
   const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -77,6 +77,7 @@ const App = () => {
       instructions: formValues.instructions.trim(),
       quantity: formValues.quantity,
     }
+    console.log("abc")
     setOrder(newPizza)
   }
 
@@ -88,7 +89,8 @@ const App = () => {
           <nav><Link to='/order'>Order</Link></nav>
         </div>
       <Switch>
-        <Route exact path='/order'><Order 
+        <Route exact path='/order'>
+          <Order 
           values={formValues}
           update={updateForm}
           submit={submitForm}

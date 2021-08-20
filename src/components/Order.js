@@ -12,6 +12,7 @@ import Size from './Size'
 import Substitude from './Substitude'
 import Instructions from './Instructions'
 import Confirmation from './Confirmation'
+import { useHistory } from "react-router-dom"; 
 
 
 
@@ -41,11 +42,14 @@ function ButtonIncrement(props) {
 export default function Order(props) {
     //for the button
     const [counter, setCounter] = useState(1);
+    
     const incrementCounter = () => setCounter(counter + 1);
     let decrementCounter = () => setCounter(counter - 1);
     if(counter<=1) {
         decrementCounter = () => setCounter(1);
     }
+    let history = useHistory();
+
     //actual codes start heres
     const { values, update, submit } = props;
 
@@ -58,10 +62,12 @@ export default function Order(props) {
     const onSubmit = evt => {
         evt.preventDefault();
         submit();
+        history.push("/order/confirmation")
+        //document.location = "/order/confirmation"
     }
 
     return (
-        <div id='pizza-form' onSubmit={onSubmit}>
+        <form id='pizza-form' onSubmit={onSubmit}>
             <h1>Lambda Eats</h1>
             <h2>Build Your Own Pizza</h2>
             <img className='home-image' src="https://images.pexels.com/photos/263041/pexels-photo-263041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt='pizza image' />
@@ -88,7 +94,8 @@ export default function Order(props) {
                 <Display message={counter}/> 
                 <ButtonDecrement onClickFunc={decrementCounter}/>
             </div>
-        <Link to='/order/confirmation'><button id='order-button'>Confirm!</button></Link>
+            <button id='order-button'>Confirm!</button>
+        {/* <Link to='/order/confirmation'><button id='order-button'>Confirm!</button></Link> */}
             {/* <div className='nav-links'>
                 <Link to='/order'></Link>
                 <Link to='/order/confirmation'>Confirm!</Link>
@@ -98,6 +105,6 @@ export default function Order(props) {
                     <Confirmation />
                 </Route>
             </Switch> */}
-        </div>
+        </form>
     )
 }
