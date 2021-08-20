@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Link, useHistory, Switch } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import Other from './Other'
 import Order from './Order'
 

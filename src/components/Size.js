@@ -1,12 +1,15 @@
 import React from 'react';
 
-export default function Size() {
+export default function Size(props) {
+    const { change, value } = props;
     return (
-        <div className='choice'>
+        <div id='size-dropdown'>
             <h3>Choice of Size</h3>
             <h4>Required</h4>
             <label>Size
-                <select>
+                <select onChange={change}
+                        velue={value.size}
+                        name='size'>
                     <option value=''>Select</option>
                     <option value='small'>Small Size</option>
                     <option value='medium'>Medium Size</option>

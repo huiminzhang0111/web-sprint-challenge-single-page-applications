@@ -38,25 +38,46 @@ function ButtonIncrement(props) {
  }
 
 
-
 export default function Order(props) {
+    //for the button
     const [counter, setCounter] = useState(1);
     const incrementCounter = () => setCounter(counter + 1);
     let decrementCounter = () => setCounter(counter - 1);
     if(counter<=1) {
         decrementCounter = () => setCounter(1);
     }
+    //actual codes start heres
+    const { values, update, submit } = props;
 
-    const { pizza } = props;
+    const onChange = evt => {
+        const name = evt.target.name;
+        const value = evt.target.value;
+        update(name, value)
+    }
 
+    const onSubmit = evt => {
+        evt.preventDefault();
+        submit();
+    }
 
     return (
-        <div className='pizza-order'>
+        <div id='pizza-form' onSubmit={onSubmit}>
             <h1>Lambda Eats</h1>
             <h2>Build Your Own Pizza</h2>
             <img className='home-image' src="https://images.pexels.com/photos/263041/pexels-photo-263041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt='pizza image' />
             <h3>Build Now!</h3>
-            <Size />
+            <div id='name-input'>
+                <label>What is your name? &nbsp;
+                    <input 
+                        type='text'
+                        name='name'
+                        value={values.name}
+                        minLength='2'
+                        onChange={onChange}
+                    />
+                </label>
+            </div>
+            <Size change={onChange} value={values} />
             <Sauce />
             <Toppings />
             <Substitude />
@@ -67,7 +88,7 @@ export default function Order(props) {
                 <Display message={counter}/> 
                 <ButtonDecrement onClickFunc={decrementCounter}/>
             </div>
-        <Link to='/order/confirmation'><button className='confirm-button'>Confirm!</button></Link>
+        <Link to='/order/confirmation'><button id='order-button'>Confirm!</button></Link>
             {/* <div className='nav-links'>
                 <Link to='/order'></Link>
                 <Link to='/order/confirmation'>Confirm!</Link>
