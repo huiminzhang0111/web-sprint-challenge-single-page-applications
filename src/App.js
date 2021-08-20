@@ -3,6 +3,8 @@ import Order from './components/Order';
 import Home from './components/Home'
 import { Route, Link, Switch } from 'react-router-dom';
 import Confirmation from "./components/Confirmation";
+import schema from './validation/formSchema'
+import * as yup from 'yup';
 
 const initialValues = {
   name: '',
@@ -27,16 +29,34 @@ const initialValues = {
 }
 
 
+const initialFormErrors = {
+  name: '',
+  size: '',
+}
+const initialDisabled = true
+
+
 const App = () => {
   const [order, setOrder] = useState([])
   const [formValues, setFormValues] = useState(initialValues)
 
+  const [formErrors, setFormErrors] = useState(initialFormErrors)
+  const [disabled, setDisabled] = useState(initialDisabled)
+
+  const validate = (inputName, inputValue) => {
+    yup.reach(schema, inputName)
+    .validate(inputValue)
+    .then(() => setFormErrors({...formErrors, [inputName]:''}))
+    .catch(err => setFormErrors({...formErrors, [inputName]:err.errors[0]}))
+  }
+
   const updateForm = (inputName, inputValue) => {
+    validate(inputName, inputValue)
     setFormValues({...formValues, [inputName]: inputValue});
   }
   const submitForm = () => {
     const newPizza = {
-      name: formValues.name,
+      name: formValues.name.trim(),
       size: formValues.size,
       sauce: formValues.sauce,
       pepperoni: formValues.pepperoni,
