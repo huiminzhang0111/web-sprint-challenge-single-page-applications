@@ -3,7 +3,7 @@ import React from 'react';
 export default function Toppings() {
 
     return (
-        <div className='form-group checkbox'>
+        <div className='form-group-checkbox'>
             <h3>Add Toppings</h3>
             <h4>Choose up to 10</h4>
         <label>Pepperoni

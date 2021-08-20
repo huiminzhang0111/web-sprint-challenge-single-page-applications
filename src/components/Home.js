@@ -16,11 +16,7 @@ export default function Home() {
             <Link to='/home'>Home</Link>
             <Link to='/help'>Help</Link>
             </div> */}
-            <img  src="https://images.pexels.com/photos/263041/pexels-photo-263041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt='pizza image'
-                  style={{
-                      height: 300,
-                      width: 500,
-                  }} />
+            <img className='home-image' src="https://images.pexels.com/photos/263041/pexels-photo-263041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt='pizza image' />
             
             <div className='text-on-image'>
                 <h3>Your favorite food delivered while coding</h3>

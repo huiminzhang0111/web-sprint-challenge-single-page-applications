@@ -52,13 +52,10 @@ export default function Order(props) {
 
     return (
         <div className='pizza-order'>
-            <h3>Build Your Own Pizza</h3>
-            <img  src="https://images.pexels.com/photos/263041/pexels-photo-263041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt='pizza image'
-                  style={{
-                      height: 300,
-                      width: 500,
-                  }} />
+            <h1>Lambda Eats</h1>
             <h2>Build Your Own Pizza</h2>
+            <img className='home-image' src="https://images.pexels.com/photos/263041/pexels-photo-263041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt='pizza image' />
+            <h3>Build Now!</h3>
             <Size />
             <Sauce />
             <Toppings />
@@ -70,7 +67,7 @@ export default function Order(props) {
                 <Display message={counter}/> 
                 <ButtonDecrement onClickFunc={decrementCounter}/>
             </div>
-        <Link to='/order/confirmation'><button>Confirm!</button></Link>
+        <Link to='/order/confirmation'><button className='confirm-button'>Confirm!</button></Link>
             {/* <div className='nav-links'>
                 <Link to='/order'></Link>
                 <Link to='/order/confirmation'>Confirm!</Link>

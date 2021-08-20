@@ -9,13 +9,13 @@ const App = () => {
 
   return (
     <div className='App'>
-      <nav>
+
         <div className='nav-links'>
-          <Link to='/'>Home</Link>
-          <Link to='/help'>Help</Link>
-          <Link to='/order'>Order</Link>
+          <nav><Link to='/'>Home</Link></nav>
+          <nav><Link to='/help'>Help</Link></nav>
+          <nav><Link to='/order'>Order</Link></nav>
         </div>
-      </nav>
+   
 
       <Switch>
         <Route exact path='/order'><Order /></Route>
