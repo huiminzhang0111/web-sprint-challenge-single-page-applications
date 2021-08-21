@@ -12,42 +12,20 @@ import Size from './Size'
 import Substitude from './Substitude'
 import Instructions from './Instructions'
 import Confirmation from './Confirmation'
+import Quantity from './Quantity'
 import { useHistory } from "react-router-dom"; 
 
 
 
-function ButtonIncrement(props) {
-  
-    return (
-      <button style={{ marginLeft: '.5rem'}} onClick={props.onClickFunc}>
-      +1
-      </button>
-    )
- }
- function ButtonDecrement(props) {
-   
-   return (
-     <button style={{ marginLeft: '.5rem'}} onClick={props.onClickFunc}>
-     -1
-     </button>
-   )
- }
- function Display(props) {
-   return (
-     <label style={{ marginLeft: '.5rem'}} >{props.message}</label>
-   )
- }
-
-
 export default function Order(props) {
-    //for the button
-    const [counter, setCounter] = useState(1);
+    // //for the button
+    // const [counter, setCounter] = useState(1);
     
-    const incrementCounter = () => setCounter(counter + 1);
-    let decrementCounter = () => setCounter(counter - 1);
-    if(counter<=1) {
-        decrementCounter = () => setCounter(1);
-    }
+    // const incrementCounter = () => setCounter(counter + 1);
+    // let decrementCounter = () => setCounter(counter - 1);
+    // if(counter<=1) {
+    //     decrementCounter = () => setCounter(1);
+    // }
     let history = useHistory();
 
     //actual codes start heres
@@ -63,7 +41,6 @@ export default function Order(props) {
         evt.preventDefault();
         submit();
         history.push("/order/confirmation")
-        //document.location = "/order/confirmation"
     }
 
     return (
@@ -84,16 +61,17 @@ export default function Order(props) {
                 </label>
             </div>
             <Size change={onChange} value={values} />
-            <Sauce />
-            <Toppings />
-            <Substitude />
-            <Instructions />
-            <div className='quantity'> 
+            <Sauce change={onChange} value={values}/>
+            <Toppings change={onChange} value={values}/>
+            <Substitude change={onChange} value={values}/>
+            <Instructions change={onChange} value={values}/>
+            {/* <div className='quantity'> 
                 <h3>Quantity</h3>
                 <ButtonIncrement onClickFunc={incrementCounter}/>
                 <Display message={counter}/> 
                 <ButtonDecrement onClickFunc={decrementCounter}/>
-            </div>
+            </div> */}
+            <Quantity />
             <button id='order-button'>Confirm!</button>
         {/* <Link to='/order/confirmation'><button id='order-button'>Confirm!</button></Link> */}
             {/* <div className='nav-links'>

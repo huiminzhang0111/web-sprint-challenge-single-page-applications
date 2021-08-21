@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function Substitude() {
+export default function Substitude(props) {
+    const { change, value } = props;
     return (
         <div className='substitude'>
             <h3>Choice of Substitude</h3>
@@ -9,6 +10,8 @@ export default function Substitude() {
                 <input 
                     type='checkbox'
                     name='substitude'
+                    onChange={change}
+                    checked={value.substitude}
                 />
             </label>
         </div>

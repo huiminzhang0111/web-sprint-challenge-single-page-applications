@@ -15,6 +15,18 @@ export default function Confirmation(props) {
             <h2>Enjoy the Pizza!</h2>
             <h2>{details.name}</h2>
             <h3>{details.size}</h3>
+            <h3>{details.sauce}</h3>
+            {/* <h3>{details.pepperoni}</h3> */}
+            {
+                details.toppings && !!details.toppings.length &&
+                <div>Toppings:
+                    <ul>
+                        {details.toppings.map((like,idx) => <li key={idx}>{like}</li>)}
+                    </ul>
+                </div>
+            }
+            <h3>Sub to gluten free?: {details.substitude}</h3>
+            <h3>{details.instructions}</h3>
         </div>
     )
 }

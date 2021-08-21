@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default function Sauce() {
+export default function Sauce(props) {
+    const { change, value } = props;
     return (
         <div className='sauce'>
                 <h3>Choice of Sauce</h3>
@@ -10,6 +11,8 @@ export default function Sauce() {
                         type='radio'
                         name='sauce'
                         value='original red'
+                        onChange={change}
+                        checked={value.sauce === "original red"}
                     />
                 </label>
                 <label>Garlic Ranch
@@ -17,6 +20,8 @@ export default function Sauce() {
                         type='radio'
                         name='sauce'
                         value='garlic ranch'
+                        onChange={change}
+                        checked={value.sauce === "garlic ranch"}
                     />
                 </label>
                 <label>BBQ Sauce
@@ -24,6 +29,8 @@ export default function Sauce() {
                         type='radio'
                         name='sauce'
                         value='bbq sauce'
+                        onChange={change}
+                        checked={value.sauce === "bbq sauce"}
                     />
                 </label>
                 <label>Spinach Alfredo
@@ -31,6 +38,8 @@ export default function Sauce() {
                         type='radio'
                         name='sauce'
                         value='spinach alfredo'
+                        onChange={change}
+                        checked={value.sauce === "spinach alfredo"}
                     />
                 </label>
             </div>
